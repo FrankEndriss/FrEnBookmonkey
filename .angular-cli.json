@@ -19,6 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "bm",
       "styles": [
+        "../node_modules/semantic-ui-css/semantic.css",
         "styles.css"
       ],
       "scripts": [],

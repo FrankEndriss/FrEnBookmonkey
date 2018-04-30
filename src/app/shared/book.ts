@@ -9,7 +9,7 @@ export class Book {
     public published: Date,
     public subtitle?: string,
     public rating?: number,
-    public thubmails?: Thumbnail[],
+    public thumbnails?: Thumbnail[],
     public description?: string
   ) { }
 }
