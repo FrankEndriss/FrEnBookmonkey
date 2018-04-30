@@ -1,5 +1,5 @@
 
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Book } from '../shared/book';
 
 @Component({
@@ -8,8 +8,13 @@ import { Book } from '../shared/book';
 })
 export class BookDetailsComponent {
   @Input() book: Book;
+  @Output() showListEvent = new EventEmitter<any>();
 
   getRating(num: number) {
     return new Array(num);
+  }
+
+  showBookList() {
+    this.showListEvent.emit();
   }
 }
