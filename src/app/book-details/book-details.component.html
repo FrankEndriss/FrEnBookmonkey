@@ -38,4 +38,7 @@
       <img *ngFor="let thumbnail of book.thumbnails" [src]="thumbnail.url">
     </div>
   </div>
+  <button class="ui tiny red labeled icon button" (click)="removeBook($event)" >
+    <i class="remove icon"></i>Buch löschen
+  </button>
 </div>
