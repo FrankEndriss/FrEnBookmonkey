@@ -3,7 +3,7 @@ import { Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/retry';
-// import 'rxjs/add/operator/throw';
+import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 
 import { Book } from './book';
@@ -47,6 +47,16 @@ export class BookStoreService {
   private errorHandler(error: Error | any): Observable<any> {
     console.log(error); // DEBUG
     return Observable.throw(error);
+  }
+
+  /** Query all Books by searchTerm. */
+  getAllSearch(searchTerm: string): Observable<Array<Book>> {
+    return this.http
+      .get(`${this.api}/books/search/${searchTerm}`)
+      .retry(3)
+      .map(response => response.json())
+      .map(rawBooks => rawBooks.map(rawBook => BookFactory.fromObject(rawBook)))
+      .catch(this.errorHandler);
   }
 
   /** Query all Books. */
